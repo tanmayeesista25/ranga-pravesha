@@ -745,7 +745,7 @@ footer{
     text-shadow:
         0 2px 8px rgba(0,0,0,.25);
 }
-
+    
 @media (max-width:768px){
 
     .logo{
@@ -892,3 +892,187 @@ footer{
 
 }
 
+/* ========================================= */
+/* FINAL HERO STYLES */
+/* ========================================= */
+
+.hero-names{
+
+    font-family:'Cormorant Garamond', serif !important;
+
+    font-size:5rem;
+
+    font-weight:600;
+
+    line-height:1.1;
+
+    letter-spacing:1px;
+
+    color:#f8f1dc;
+
+    text-shadow:0 2px 8px rgba(0,0,0,.25);
+
+    margin-bottom:10px;
+}
+
+.hero-ampersand{
+
+    color:#d4af37;
+
+    font-size:3rem;
+}
+
+.hero-ranga{
+
+    font-family:'Cinzel', serif;
+
+    color:#d4af37;
+
+    font-size:2.3rem;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin:15px 0 25px;
+}
+
+.guru-line{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:1.4rem;
+
+    color:#f5e8c7;
+
+    line-height:1.6;
+
+    margin-bottom:35px;
+}
+
+.guru-name{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:#d4af37;
+
+    font-size:1.8rem;
+
+    font-weight:700;
+}
+
+/* ========================================= */
+/* NAVBAR */
+/* ========================================= */
+
+.logo{
+
+    font-family:'Cormorant Garamond', serif !important;
+
+    font-size:1.05rem !important;
+
+    text-align:center;
+
+    line-height:1.3;
+}
+
+/* ========================================= */
+/* COUNTDOWN FIX */
+/* ========================================= */
+
+.countdown-modern{
+
+    margin-top:20px !important;
+}
+
+.time-block{
+
+    transform:none !important;
+}
+
+.time-separator{
+
+    transform:none !important;
+}
+
+.time-label{
+
+    margin-top:10px !important;
+}
+
+/* ========================================= */
+/* FOOTER */
+/* ========================================= */
+
+.footer-text{
+
+    text-align:center;
+
+    margin:0;
+}
+
+/* ========================================= */
+/* MOBILE */
+/* ========================================= */
+
+@media(max-width:768px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        padding:12px;
+
+        gap:10px;
+    }
+
+    .logo{
+
+        font-size:.85rem !important;
+
+        max-width:90%;
+    }
+
+    .links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:5px;
+    }
+
+    .links a{
+
+        font-size:.8rem;
+    }
+
+    .hero{
+
+        padding-top:160px;
+    }
+
+    .hero-names{
+
+        font-size:3rem;
+    }
+
+    .hero-ranga{
+
+        font-size:1.4rem;
+
+        letter-spacing:2px;
+    }
+
+    .guru-line{
+
+        font-size:1rem;
+    }
+
+    .guru-name{
+
+        font-size:1.2rem;
+    }
+}
