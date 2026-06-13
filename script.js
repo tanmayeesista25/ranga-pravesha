@@ -85,29 +85,24 @@ window.addEventListener("load", () => {
 
     const image = document.getElementById("galleryImage");
 
-    setInterval(() => {
+setInterval(() => {
 
-        image.style.opacity = 0.25;
+    image.style.opacity = 0;
 
-        setTimeout(() => {
+    setTimeout(() => {
 
-            currentGalleryImage =
-                (currentGalleryImage + 1) %
-                galleryImages.length;
+        currentGalleryImage =
+            (currentGalleryImage + 1) %
+            galleryImages.length;
 
-            image.src =
-                galleryImages[currentGalleryImage];
+        image.src =
+            galleryImages[currentGalleryImage];
 
-        }, 600);
+        image.style.opacity = 1;
 
-        setTimeout(() => {
+    }, 800);
 
-            image.style.opacity = 1;
-
-        }, 650);
-
-    }, 5000);
-
+}, 5000);
 });
 
 
