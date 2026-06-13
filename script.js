@@ -70,7 +70,6 @@ const galleryImages = [
     "images/DSC_3810.jpg",
     "images/DSC_3836.jpg",
     "images/DSC_3853.jpg",
-    "images/DSC_4355.jpg",
     "images/DSC_4457.png",
     "images/DSC_4467.jpg",
     "images/DSC_4780.jpg",

@@ -564,7 +564,7 @@ footer{
 
     margin:auto;
 
-    transition:opacity .8s ease-in-out;
+    transition: opacity 0.8s ease;
 
     box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
