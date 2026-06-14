@@ -247,31 +247,6 @@ a{color:inherit;text-decoration:none}
 .orn span{flex:1;height:1px;background:rgba(201,168,76,.4)}
 .orn em{color:var(--gold);font-style:normal;font-size:.6rem}
 
-/* ── GALLERY ── */
-.gallery-bg{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-dk) 100%)}
-.gallery-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem;
-  max-width:1100px;margin:0 auto;
-}
-.gallery-slot{
-  aspect-ratio:1;background:rgba(62,12,30,.04);
-  border:1.5px dashed rgba(154,115,48,.28);border-radius:8px;
-  overflow:hidden;position:relative;cursor:pointer;
-  transition:border-color .25s,box-shadow .25s;
-}
-.gallery-slot:hover{border-color:var(--gold);box-shadow:0 4px 18px rgba(154,115,48,.18)}
-.gallery-slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.gallery-slot .gh{
-  position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:.4rem;
-  color:rgba(62,12,30,.3);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
-}
-.gallery-slot input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2}
-.gh-icon{font-size:1.5rem;opacity:.4}
-.gallery-note{
-  text-align:center;margin-top:1.2rem;
-  font-family:'Cormorant Garamond',serif;font-size:.96rem;font-style:italic;color:var(--text-lt);
-}
 
 /* ── RSVP ── */
 .rsvp-bg{
@@ -416,7 +391,6 @@ a{color:inherit;text-decoration:none}
   <div class="nav-inner">
     <div class="nav-brand">Aashritha &amp; Tanmayee's Ranga Pravesha</div>
     <div class="nav-links">
-      <a href="#gallery">Gallery</a>
       <a href="#rsvp" class="nav-rsvp-btn">RSVP</a>
     </div>
   </div>
@@ -474,12 +448,20 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 
-  <!-- Add your photos as images/photo-1.jpg through photo-4.jpg in the repo -->
   <div class="hero-right">
-    <img src="images/photo-1.jpg" alt="Aashritha Kanumuri in Bharatanatyam costume" class="active"/>
-    <img src="images/photo-2.jpg" alt="Tanmayee Sista in Bharatanatyam costume"/>
-    <img src="images/photo-3.jpg" alt="Aashritha and Tanmayee performing"/>
-    <img src="images/photo-4.jpg" alt="Classical dance pose"/>
+    <img src="images/DSC_3195.jpg" alt="Bharatanatyam performance" class="active"/>
+    <img src="images/DSC_3315.jpg" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_3766.jpg" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_3810.jpg" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_3836.jpg" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_3853.jpg" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_4355.png" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_4457.png" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_4467.jpg" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_4780.jpg" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_4902.jpg" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_4905.jpg" alt="Bharatanatyam performance"/>
+    <img src="images/DSC_4912.jpg" alt="Bharatanatyam performance"/>
     <div class="hero-overlay"></div>
   </div>
 
@@ -499,16 +481,6 @@ a{color:inherit;text-decoration:none}
 
 <main>
 
-<!-- GALLERY -->
-<section id="gallery" class="section gallery-bg">
-  <div class="container">
-    <p class="sec-eye reveal">A Glimpse</p>
-    <h2 class="sec-title reveal">Gallery</h2>
-    <div class="orn reveal"><span></span><em>◆</em><span></span></div>
-    <div class="gallery-grid" id="galleryGrid"></div>
-    <p class="gallery-note reveal">Click any slot to preview a photo · Replace the <code>images/</code> folder in the repo for the live site</p>
-  </div>
-</section>
 
 <!-- RSVP -->
 <section id="rsvp" class="section rsvp-bg">
@@ -624,24 +596,6 @@ window.addEventListener("scroll", doReveal, {passive:true});
 window.addEventListener("load", doReveal);
 doReveal();
 
-/* Gallery upload slots */
-const gg = document.getElementById("galleryGrid");
-for (let i = 0; i < 9; i++) {
-  const slot = document.createElement("div"); slot.className = "gallery-slot";
-  slot.innerHTML = `<div class="gh"><span class="gh-icon">✦</span><span>Add photo</span></div><input type="file" accept="image/*"/>`;
-  slot.querySelector("input").addEventListener("change", function() {
-    if (!this.files[0]) return;
-    const r = new FileReader();
-    r.onload = e => {
-      slot.querySelector(".gh").style.display = "none";
-      const ex = slot.querySelector("img"); if (ex) ex.remove();
-      const img = document.createElement("img"); img.src = e.target.result; img.alt = "Gallery photo";
-      slot.prepend(img);
-    };
-    r.readAsDataURL(this.files[0]);
-  });
-  gg.appendChild(slot);
-}
 
 /* Wishes section — populated manually or via future integration */
 document.getElementById("msgStatus").textContent = "Wishes will appear here as guests RSVP.";
