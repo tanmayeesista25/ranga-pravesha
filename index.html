@@ -582,6 +582,8 @@ a{color:inherit;text-decoration:none}
           </div>
         </div>
 
+        <p id="cantMakeItMsg" style="display:none;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--maroon-lt);margin:.5rem 0 1rem;">We'll miss you! If plans change, feel free to reach out — we'd love to have you join us.</p>
+
         <div class="counters-wrap" id="countersWrap">
           <div class="form-row">
             <div class="form-group">
@@ -724,6 +726,7 @@ document.querySelectorAll(".cbtn").forEach(btn => {
 document.querySelectorAll("input[name='status']").forEach(r => {
   r.addEventListener("change", () => {
     document.getElementById("countersWrap").classList.toggle("show", r.value === "yes");
+    document.getElementById("cantMakeItMsg").style.display = r.value === "no" ? "block" : "none";
   });
 });
 
