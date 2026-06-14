@@ -192,7 +192,8 @@ a{color:inherit;text-decoration:none}
 }
 .hero-right img{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center top;
+  object-fit:contain;object-position:center center;
+  background:var(--cream-dk);
   opacity:0;transition:opacity 1.4s ease-in-out;will-change:opacity;
 }
 .hero-right img.active{opacity:1}
@@ -428,18 +429,8 @@ a{color:inherit;text-decoration:none}
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-top">
-    <span>ॐ</span>
-    <span style="display:flex;flex-direction:column;align-items:center;gap:.1rem;line-height:1.5">
-      <span>Angikam Bhuvanam Yasya</span>
-      <span>Vachikam Sarva Vangmayam</span>
-      <span>Aharyam Chandra Taradi</span>
-      <span>Tam Namah Satvikam Shivam</span>
-    </span>
-    <span>ॐ</span>
-  </div>
   <div class="nav-inner">
-    <div class="nav-brand">Aashritha &amp; Tanmayee's Ranga Pravesha</div>
+    <div class="nav-brand" style="font-size:1.5rem;letter-spacing:.2em">ॐ</div>
     <div class="nav-links">
       <a href="#rsvp" class="nav-rsvp-btn">RSVP</a>
     </div>
