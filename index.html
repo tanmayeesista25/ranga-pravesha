@@ -689,6 +689,18 @@ doReveal();
 /* Wishes section — populated manually or via future integration */
 document.getElementById("msgStatus").textContent = "Wishes will appear here as guests RSVP.";
 
+/* Phone formatter */
+document.getElementById("rsvpPhone").addEventListener("input", function() {
+  const digits = this.value.replace(/\D/g, "").slice(0, 11);
+  let formatted = "";
+  if (digits.length === 0) { this.value = ""; return; }
+  if (digits.length <= 1) { formatted = "+" + digits; }
+  else if (digits.length <= 4) { formatted = "+" + digits[0] + " (" + digits.slice(1); }
+  else if (digits.length <= 7) { formatted = "+" + digits[0] + " (" + digits.slice(1,4) + ") " + digits.slice(4); }
+  else { formatted = "+" + digits[0] + " (" + digits.slice(1,4) + ") " + digits.slice(4,7) + "-" + digits.slice(7); }
+  this.value = formatted;
+});
+
 /* Counter buttons */
 document.querySelectorAll(".cbtn").forEach(btn => {
   btn.addEventListener("click", () => {
