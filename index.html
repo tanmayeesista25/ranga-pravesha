@@ -645,12 +645,12 @@ a{color:inherit;text-decoration:none}
 <!-- WISHES -->
 <section id="wishes" class="section wishes-bg">
   <div class="container">
-    <p class="sec-eye reveal">From Our Guests</p>
+    <p class="sec-eye reveal">With Warm Hearts</p>
     <h2 class="sec-title reveal">Wishes</h2>
-    <p class="sec-sub reveal">Kind words from those who love and celebrate Aashritha and Tanmayee.</p>
+    <p class="sec-sub reveal">Words from the hearts that have watched you grow, step by step.</p>
     <div class="orn reveal"><span></span><em>◆</em><span></span></div>
     <div class="msg-grid" id="msgGrid"></div>
-    <p class="msg-status" id="msgStatus">Wishes will appear here as guests RSVP.</p>
+    <p class="msg-status" id="msgStatus">This wall is waiting for your words.</p>
   </div>
 </section>
 
@@ -797,7 +797,7 @@ function loadGuestMessages() {
   el.textContent = "Loading wishes…";
 
   const timer = setTimeout(() => {
-    el.textContent = "Wishes will appear here as guests RSVP.";
+    el.textContent = "This wall is waiting for your words.";
     cleanup();
   }, 7000);
 
@@ -812,7 +812,7 @@ function loadGuestMessages() {
     const messages = payload && payload.messages ? payload.messages : [];
     grid.innerHTML = "";
     if (!messages.length) {
-      el.textContent = "Wishes will appear here as guests RSVP.";
+      el.textContent = "This wall is waiting for your words.";
     } else {
       el.textContent = "";
       messages.forEach(m => {
