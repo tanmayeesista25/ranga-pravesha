@@ -169,13 +169,16 @@ function dedupeExistingRsvps() {
 // ── Public comments ───────────────────────────────────────────────────────────
 
 function publicCommentsResponse_(params) {
-  const requestedLimit = Number(params.limit || 24);
-  const limit          = Number.isFinite(requestedLimit) ? Math.max(1, Math.min(requestedLimit, 60)) : 24;
-  const payload        = { ok: true, messages: getPublicMessages_(limit) };
+  const requestedLimit  = Number(params.limit || 12);
+  const limit           = Number.isFinite(requestedLimit) ? Math.max(1, Math.min(requestedLimit, 60)) : 12;
+  const requestedOffset = Number(params.offset || 0);
+  const offset          = Number.isFinite(requestedOffset) ? Math.max(0, requestedOffset) : 0;
+  const all             = getPublicMessages_();
+  const payload         = { ok: true, messages: all.slice(offset, offset + limit), total: all.length };
   return params.callback ? jsonp_(params.callback, payload) : json_(payload);
 }
 
-function getPublicMessages_(limit) {
+function getPublicMessages_() {
   const sheet     = getSheet_();
   const headerMap = ensureHeaders_(sheet);
   const lastRow   = sheet.getLastRow();
@@ -193,8 +196,7 @@ function getPublicMessages_(limit) {
       };
     })
     .filter(Boolean)
-    .sort((a, b) => (Date.parse(b.submittedAt) || 0) - (Date.parse(a.submittedAt) || 0))
-    .slice(0, limit);
+    .sort((a, b) => (Date.parse(b.submittedAt) || 0) - (Date.parse(a.submittedAt) || 0));
 }
 
 // ── Sheet helpers ─────────────────────────────────────────────────────────────

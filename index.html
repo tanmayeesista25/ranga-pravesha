@@ -651,6 +651,9 @@ a{color:inherit;text-decoration:none}
     <div class="orn reveal"><span></span><em>◆</em><span></span></div>
     <div class="msg-grid" id="msgGrid"></div>
     <p class="msg-status" id="msgStatus">This wall is waiting for your words.</p>
+    <div style="text-align:center;margin-top:2rem">
+      <button id="loadMoreBtn" class="btn btn-outline" style="display:none">Load More Wishes</button>
+    </div>
   </div>
 </section>
 
@@ -789,15 +792,22 @@ document.getElementById("rsvpForm").addEventListener("submit", async evt => {
   if (data.message) setTimeout(loadGuestMessages, 1500);
 });
 
-/* Load guest wishes via JSONP */
-function loadGuestMessages() {
+/* Load guest wishes via JSONP with pagination */
+const WISHES_PER_PAGE = 12;
+let wishesOffset = 0;
+let wishesTotal = 0;
+
+function loadGuestMessages(offset) {
+  offset = offset || 0;
   const cb = "wishes_" + Date.now().toString(36);
   const el = document.getElementById("msgStatus");
   const grid = document.getElementById("msgGrid");
-  el.textContent = "Loading wishes…";
+  const btn = document.getElementById("loadMoreBtn");
+  if (offset === 0) { grid.innerHTML = ""; el.textContent = "Loading wishes…"; }
+  if (btn) btn.style.display = "none";
 
   const timer = setTimeout(() => {
-    el.textContent = "This wall is waiting for your words.";
+    if (offset === 0) el.textContent = "This wall is waiting for your words.";
     cleanup();
   }, 7000);
 
@@ -810,8 +820,9 @@ function loadGuestMessages() {
 
   window[cb] = function(payload) {
     const messages = payload && payload.messages ? payload.messages : [];
-    grid.innerHTML = "";
-    if (!messages.length) {
+    wishesTotal = payload && payload.total ? payload.total : 0;
+    wishesOffset = offset + messages.length;
+    if (offset === 0 && !messages.length) {
       el.textContent = "This wall is waiting for your words.";
     } else {
       el.textContent = "";
@@ -822,25 +833,29 @@ function loadGuestMessages() {
         card.innerHTML = `<p>${m.message.replace(/</g,"&lt;")}</p><div class="msg-foot"><span>${m.name.replace(/</g,"&lt;")}</span><time>${date}</time></div>`;
         grid.appendChild(card);
       });
+      if (btn) btn.style.display = wishesOffset < wishesTotal ? "inline-block" : "none";
     }
     cleanup();
   };
 
   const url = new URL(RSVP_ENDPOINT);
   url.searchParams.set("action", "comments");
-  url.searchParams.set("limit", "24");
+  url.searchParams.set("limit", String(WISHES_PER_PAGE));
+  url.searchParams.set("offset", String(offset));
   url.searchParams.set("callback", cb);
   url.searchParams.set("v", Date.now());
 
   const script = document.createElement("script");
   script.id = "_wishScript";
-  script.onerror = () => { el.textContent = "Wishes will appear here as guests RSVP."; cleanup(); };
+  script.onerror = () => { if (offset === 0) el.textContent = "This wall is waiting for your words."; cleanup(); };
   script.src = url.toString();
   document.body.appendChild(script);
 }
 
+document.getElementById("loadMoreBtn").addEventListener("click", () => loadGuestMessages(wishesOffset));
+
 /* Load wishes on page load */
-loadGuestMessages();
+loadGuestMessages(0);
 </script>
 </body>
 </html>
