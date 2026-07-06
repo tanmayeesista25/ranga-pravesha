@@ -169,12 +169,10 @@ function dedupeExistingRsvps() {
 // ── Public comments ───────────────────────────────────────────────────────────
 
 function publicCommentsResponse_(params) {
-  const requestedLimit  = Number(params.limit || 12);
-  const limit           = Number.isFinite(requestedLimit) ? Math.max(1, Math.min(requestedLimit, 60)) : 12;
-  const requestedOffset = Number(params.offset || 0);
-  const offset          = Number.isFinite(requestedOffset) ? Math.max(0, requestedOffset) : 0;
+  const requestedLimit  = Number(params.limit || 200);
+  const limit           = Number.isFinite(requestedLimit) ? Math.max(1, Math.min(requestedLimit, 200)) : 200;
   const all             = getPublicMessages_();
-  const payload         = { ok: true, messages: all.slice(offset, offset + limit), total: all.length };
+  const payload         = { ok: true, messages: all.slice(0, limit) };
   return params.callback ? jsonp_(params.callback, payload) : json_(payload);
 }
 
