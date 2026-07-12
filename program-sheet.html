@@ -130,7 +130,7 @@ body{
   margin:1pt 0 9pt;
 }
 
-.prog-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 18pt}
+.prog-cols{display:grid;grid-template-columns:1fr 16pt 1fr;gap:0 14pt;align-items:stretch}
 .prog-col{display:flex;flex-direction:column;gap:8pt}
 .item{display:grid;grid-template-columns:16pt 1fr;gap:6pt;align-items:start}
 .item-num{
@@ -148,12 +148,16 @@ body{
   font-family:'Lato',sans-serif;font-weight:300;font-size:8.4pt;color:var(--text-lt);line-height:1.42;
 }
 
-.interval-tag{
-  display:flex;align-items:center;gap:6pt;margin-top:2pt;
-  font-family:'Cinzel',serif;font-weight:600;font-size:7.6pt;letter-spacing:.28em;
-  text-transform:uppercase;color:var(--maroon-dk);
+.col-divider{position:relative;display:flex;justify-content:center}
+.col-divider .line{width:1px;background:rgba(154,115,48,.5)}
+.col-divider .label{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  writing-mode:vertical-rl;
+  background:var(--cream);padding:7pt 3pt;
+  font-family:'Cinzel',serif;font-weight:600;font-size:7.4pt;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--maroon-dk);white-space:nowrap;
 }
-.interval-tag span{flex:1;height:1px;background:rgba(154,115,48,.4)}
 
 /* ---- footer ---- */
 .footer{
@@ -245,7 +249,11 @@ body{
           <p class="item-desc">Lyrics drawn from the Hanuman Stotram, set to Varnam by Guru Sri K.J. Govindarajan.</p>
         </div>
       </div>
-      <div class="interval-tag"><span></span>Interval<span></span></div>
+    </div>
+
+    <div class="col-divider">
+      <div class="line"></div>
+      <div class="label">Interval</div>
     </div>
 
     <div class="prog-col">
