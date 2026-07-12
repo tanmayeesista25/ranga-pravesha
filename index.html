@@ -275,6 +275,39 @@ a{color:inherit;text-decoration:none}
 .orn em{color:var(--gold);font-style:normal;font-size:.6rem}
 
 
+/* ── PROGRAM ── */
+.program-bg{
+  background:linear-gradient(180deg,var(--cream) 0%,var(--cream-dk) 100%);
+}
+.program-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:1.7rem}
+.program-item{display:grid;grid-template-columns:60px 1fr;gap:1.2rem;align-items:start}
+.program-num{
+  font-family:'Cinzel',serif;font-size:1.7rem;font-weight:600;
+  color:var(--gold-dk);text-align:center;line-height:1;padding-top:.1rem;
+}
+.program-title{
+  font-family:'Cinzel',serif;font-size:1.1rem;font-weight:600;
+  color:var(--maroon-dk);letter-spacing:.02em;margin-bottom:.3rem;
+}
+.program-meta{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.96rem;
+  color:var(--gold-dk);margin-bottom:.5rem;
+}
+.program-desc{
+  font-family:'Lato',sans-serif;font-weight:300;font-size:.98rem;
+  color:var(--text-lt);line-height:1.65;
+}
+.program-interval{
+  display:flex;align-items:center;gap:1rem;margin:.3rem 0;
+  font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--maroon-dk);
+}
+.program-interval span{flex:1;height:1px;background:rgba(154,115,48,.35)}
+@media(max-width:680px){
+  .program-item{grid-template-columns:42px 1fr;gap:.8rem}
+  .program-num{font-size:1.3rem}
+}
+
 /* ── RSVP ── */
 .rsvp-bg{
   background:
@@ -460,6 +493,7 @@ a{color:inherit;text-decoration:none}
     <a href="https://aashrithatanmayee.com" class="nav-site-tag">Aashritha &amp; Tanmayee's Ranga Pravesham</a>
     <div class="nav-brand" style="font-size:1.5rem;letter-spacing:.2em">ॐ</div>
     <div class="nav-links">
+      <a href="#program">Program</a>
       <a href="#rsvp" class="nav-rsvp-btn">RSVP</a>
     </div>
   </div>
@@ -549,6 +583,85 @@ a{color:inherit;text-decoration:none}
 
 <main>
 
+<!-- PROGRAM -->
+<section id="program" class="section program-bg">
+  <div class="container">
+    <p class="sec-eye reveal">A Classical Journey</p>
+    <h2 class="sec-title reveal">Program</h2>
+    <p class="sec-sub reveal">Eight pieces from the Bharatanatyam repertoire, from invocation to Mangalam.</p>
+    <div class="orn reveal"><span></span><em>◆</em><span></span></div>
+
+    <div class="program-list">
+      <div class="program-item reveal">
+        <div class="program-num">I</div>
+        <div>
+          <p class="program-title">Vighnaraja &amp; Saraswathi Stotram</p>
+          <p class="program-meta">Raga Malika &amp; Tala Malika · Sanskrit</p>
+          <p class="program-desc">A prayer to Lord Vighnaraja and to Goddess Saraswathi. Followed by Alaripu in Mishra Chaapu Tala.</p>
+        </div>
+      </div>
+      <div class="program-item reveal">
+        <div class="program-num">II</div>
+        <div>
+          <p class="program-title">Jathiswaram</p>
+          <p class="program-meta">Raga Shree · Khanda Chaapu Tala</p>
+          <p class="program-desc">Full of pure dance movements (Nritta), dealing with the execution of steps (Adavus), combined in definite groups called Jathis.</p>
+        </div>
+      </div>
+      <div class="program-item reveal">
+        <div class="program-num">III</div>
+        <div>
+          <p class="program-title">Shabdam — Sarasijakshalu</p>
+          <p class="program-meta">Raga Malika · Mishra Chapu Tala · Telugu · Sri Swathi Thirunal</p>
+          <p class="program-desc">On Lord Krishna. This dance describes the pranks of the little boy Krishna.</p>
+        </div>
+      </div>
+      <div class="program-item reveal">
+        <div class="program-num">IV</div>
+        <div>
+          <p class="program-title">Varnam — Ayodhya Pura Netharam</p>
+          <p class="program-meta">Raga Desh · Adi Tala · Guru Sri K.J. Govindarajan</p>
+          <p class="program-desc">The lyrics for this Varnam are taken from the Hanuman Stotram, composed by Guru Sri K.J. Govindarajan.</p>
+        </div>
+      </div>
+
+      <div class="program-interval reveal"><span></span>Interval<span></span></div>
+
+      <div class="program-item reveal">
+        <div class="program-num">V</div>
+        <div>
+          <p class="program-title">Ee Pariya Sobhagu</p>
+          <p class="program-meta">Raga Bilahari · Khanda Chaapu Tala · Kannada · Saint Purandara Dasa</p>
+          <p class="program-desc">The poet describes the beauty of Lord Krishna.</p>
+        </div>
+      </div>
+      <div class="program-item reveal">
+        <div class="program-num">VI</div>
+        <div>
+          <p class="program-title">Ananda Natam Aduvar</p>
+          <p class="program-meta">Raga Poorvi Kalyani · Rupaka Tala · Tamil · Sri Neelakantan Shiva</p>
+          <p class="program-desc">The poet praises Lord Shiva in this composition.</p>
+        </div>
+      </div>
+      <div class="program-item reveal">
+        <div class="program-num">VII</div>
+        <div>
+          <p class="program-title">Kancha Dalaya Takshi</p>
+          <p class="program-meta">Raga Kamala Manohari · Adi Tala · Sanskrit · Sri Muthuswami Dikshitar</p>
+          <p class="program-desc">A Padam portraying Goddess Parvathi with lotus-like eyes, as the very embodiment of grace.</p>
+        </div>
+      </div>
+      <div class="program-item reveal">
+        <div class="program-num">VIII</div>
+        <div>
+          <p class="program-title">Thillana</p>
+          <p class="program-meta">Raga Kadhana Kutuhala · Adi Tala · Telugu · Sri Bala Murali Krishna</p>
+          <p class="program-desc">Traditionally the last item in a Bharatanatyam recital. Full of pure dance with intricate footwork and graceful movements expressing joy and ecstasy. Followed by a Mangalam.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- RSVP -->
 <section id="rsvp" class="section rsvp-bg">
