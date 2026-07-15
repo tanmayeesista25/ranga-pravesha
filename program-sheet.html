@@ -107,17 +107,28 @@ body{
 .rule em{color:var(--gold);font-style:normal;font-size:8pt}
 
 .info-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:4pt 20pt;
+  display:grid;grid-template-columns:1fr 1fr;gap:8pt 16pt;
   padding:9pt 0;border-top:1px solid rgba(154,115,48,.32);border-bottom:1px solid rgba(154,115,48,.32);
   margin-bottom:11pt;
 }
+.info-panel{
+  padding:8pt 10pt 9pt;
+  border:1px solid rgba(154,115,48,.22);
+  background:rgba(255,255,255,.35);
+  border-radius:3pt;
+  text-align:center;
+}
 .info-head{
   font-family:'Cinzel',serif;font-weight:600;font-size:8.5pt;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--maroon-dk);text-decoration:underline;text-underline-offset:3px;
-  margin-bottom:3pt;
+  text-transform:uppercase;color:var(--maroon-dk);
+  margin-bottom:4pt;
 }
 .info-val{
-  font-family:'Cormorant Garamond',serif;font-weight:500;font-size:11pt;color:var(--text);line-height:1.55;
+  font-family:'Lato',sans-serif;font-weight:600;font-size:9.2pt;color:var(--text);line-height:1.45;
+}
+.info-detail{
+  font-weight:400;font-size:8.25pt;color:var(--text-lt);line-height:1.45;
+  letter-spacing:.015em;
 }
 
 /* Add this near your existing .info-grid styles */
@@ -129,6 +140,7 @@ body{
   border: 1px solid rgba(154,115,48,.35);
   background: rgba(201,168,76,.08);
   border-radius: 3pt;
+  text-align:center;
 }
 
 .reception-kicker{
@@ -230,16 +242,16 @@ body{
 
 <!-- Replace your existing info-grid block with this -->
 <div class="info-grid">
-  <div>
+  <div class="info-panel">
     <p class="info-head">Date &amp; Time</p>
     <p class="info-val">Saturday, July 18th, 2026</p>
-    <p class="info-val">Doors open at 2:30 PM · Seated by 3:00 PM</p>
+    <p class="info-val info-detail">Doors open at 2:30 PM<br/>Seated by 3:00 PM</p>
   </div>
 
-  <div>
+  <div class="info-panel">
     <p class="info-head">Venue</p>
     <p class="info-val">Shenkman Arts Centre</p>
-    <p class="info-val">245 Centrum Blvd., Ottawa, ON K1E 0A1</p>
+    <p class="info-val info-detail">245 Centrum Blvd., Ottawa, ON K1E 0A1</p>
   </div>
 
   <div class="reception-callout">
