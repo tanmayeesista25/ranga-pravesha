@@ -120,6 +120,35 @@ body{
   font-family:'Cormorant Garamond',serif;font-weight:500;font-size:11pt;color:var(--text);line-height:1.55;
 }
 
+/* Add this near your existing .info-grid styles */
+.reception-callout{
+  grid-column: 1 / -1;
+  margin-top: 6pt;
+  padding: 10pt 12pt;
+  border: 1px solid var(--gold-dk);
+  border-left: 4px solid var(--gold-dk);
+  background: linear-gradient(90deg, rgba(201,168,76,.20), rgba(201,168,76,.07));
+  border-radius: 4pt;
+  box-shadow: 0 2px 8px rgba(12,31,44,.10);
+}
+
+.reception-kicker{
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 9pt;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--maroon-dk);
+  margin-bottom: 2pt;
+}
+
+.reception-text{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 11pt;
+  color: var(--maroon-dk);
+  line-height: 1.35;
+}
 /* ---- program ---- */
 .prog-eyebrow{
   text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:9.5pt;
@@ -199,6 +228,7 @@ body{
 
   <div class="rule"><span></span><em>◆</em><span></span></div>
 
+<!-- Replace your existing info-grid block with this -->
 <div class="info-grid">
   <div>
     <p class="info-head">Date &amp; Time</p>
@@ -212,11 +242,12 @@ body{
     <p class="info-val">245 Centrum Blvd., Ottawa, ON K1E 0A1</p>
   </div>
 
-  <div style="grid-column: 1 / -1; margin-top: 2pt;">
-    <p class="info-head">Reception</p>
-    <p class="info-val">A boxed dinner will be served following the performance.</p>
+  <div class="reception-callout">
+    <p class="reception-kicker">Reception</p>
+    <p class="reception-text">A boxed dinner will be served following the performance.</p>
   </div>
 </div>
+  
   <p class="prog-eyebrow">A Classical Journey</p>
   <h2 class="prog-title">Program</h2>
 
