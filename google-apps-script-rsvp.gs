@@ -66,6 +66,9 @@ function doGet(e) {
 }
 
 function doPost(e) {
+  // RSVP closed — no longer accepting new submissions
+  return json_({ ok: false, error: "RSVPs are now closed. Thank you for your interest!" });
+
   const data = parseRequest_(e);
   data.status = normaliseStatus_(data.status);
 
