@@ -438,39 +438,6 @@ a{color:inherit;text-decoration:none}
 }
 .btn-full{width:100%;margin-top:.5rem}
 
-/* ── WISHES ── */
-.wishes-bg{
-  background:
-    radial-gradient(85% 65% at 50% 0%,rgba(232,201,110,.15),transparent 58%),
-    linear-gradient(180deg,var(--cream) 0%,var(--cream-dk) 100%);
-}
-.msg-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;
-  margin-top:2rem;
-}
-.msg-card{
-  min-height:170px;display:flex;flex-direction:column;justify-content:space-between;gap:1.2rem;
-  padding:1.3rem;border:1px solid rgba(201,168,76,.3);border-radius:14px;
-  background:rgba(255,251,244,.98);box-shadow:0 14px 32px rgba(44,20,8,.09);
-}
-.msg-card p{
-  font-family:'Cormorant Garamond',serif;font-size:1.15rem;line-height:1.5;
-  color:var(--text-lt);
-}
-.msg-foot{
-  display:flex;align-items:center;justify-content:space-between;gap:.7rem;
-  font-family:'Cinzel',serif;font-size:.7rem;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--maroon-dk);
-}
-.msg-foot time{
-  font-family:'Lato',sans-serif;font-size:.66rem;font-weight:700;
-  letter-spacing:.07em;color:var(--gold-dk);
-}
-.msg-status{
-  text-align:center;margin-top:1.2rem;
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--text-lt);
-}
-
 
 /* ── FOOTER ── */
 .site-footer{
@@ -490,7 +457,6 @@ a{color:inherit;text-decoration:none}
   .hero-right{height:min(75vw,520px)}
   .countdown-bar{grid-column:1}
   .hero-overlay{background:linear-gradient(to bottom,transparent 55%,rgba(245,233,214,.5) 80%,var(--cream-dk) 100%)}
-.msg-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:680px){
   #nav .nav-links a:not(.nav-rsvp-btn){display:none}
@@ -498,7 +464,6 @@ a{color:inherit;text-decoration:none}
   .hero-right img{object-fit:contain}
   .hero-overlay{display:none}
   .form-row{grid-template-columns:1fr}
-  .msg-grid{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
   .invite-grid{grid-template-columns:1fr;text-align:center}
 }
@@ -791,18 +756,6 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- WISHES -->
-<section id="wishes" class="section wishes-bg">
-  <div class="container">
-    <p class="sec-eye reveal">With Warm Hearts</p>
-    <h2 class="sec-title reveal">Wishes</h2>
-    <p class="sec-sub reveal">Words from the hearts that have watched you grow, step by step.</p>
-    <div class="orn reveal"><span></span><em>◆</em><span></span></div>
-    <div class="msg-grid" id="msgGrid"></div>
-    <p class="msg-status" id="msgStatus">This wall is waiting for your words.</p>
-  </div>
-</section>
-
 
 </main>
 
@@ -866,9 +819,6 @@ window.addEventListener("scroll", doReveal, {passive:true});
 window.addEventListener("load", doReveal);
 doReveal();
 
-
-/* Wishes section — populated manually or via future integration */
-document.getElementById("msgStatus").textContent = "Wishes will appear here as guests RSVP.";
 
 /* Phone formatter — +1 locked, user types 10 digits */
 (function(){
@@ -954,61 +904,9 @@ document.getElementById("rsvpForm").addEventListener("submit", async evt => {
     : "Thank you for letting us know. We will miss you and hope to celebrate together another time.";
   document.getElementById("calendarActions").classList.toggle("show", data.status === "yes");
   document.getElementById("rsvpSuccess").style.display = "block";
-  if (data.message) setTimeout(loadGuestMessages, 1500);
 });
 
-/* Load guest wishes via JSONP */
-function loadGuestMessages() {
-  const cb = "wishes_" + Date.now().toString(36);
-  const el = document.getElementById("msgStatus");
-  const grid = document.getElementById("msgGrid");
-  el.textContent = "Loading wishes…";
 
-  const timer = setTimeout(() => {
-    el.textContent = "This wall is waiting for your words.";
-    cleanup();
-  }, 7000);
-
-  function cleanup() {
-    clearTimeout(timer);
-    delete window[cb];
-    const s = document.getElementById("_wishScript");
-    if (s) s.remove();
-  }
-
-  window[cb] = function(payload) {
-    const messages = payload && payload.messages ? payload.messages : [];
-    grid.innerHTML = "";
-    if (!messages.length) {
-      el.textContent = "This wall is waiting for your words.";
-    } else {
-      el.textContent = "";
-      messages.forEach(m => {
-        const card = document.createElement("div");
-        card.className = "msg-card";
-        const date = m.submittedAt ? new Date(m.submittedAt).toLocaleDateString("en-CA", {month:"short",day:"numeric",year:"numeric"}) : "";
-        card.innerHTML = `<p>${m.message.replace(/</g,"&lt;")}</p><div class="msg-foot"><span>${m.name.replace(/</g,"&lt;")}</span><time>${date}</time></div>`;
-        grid.appendChild(card);
-      });
-    }
-    cleanup();
-  };
-
-  const url = new URL(RSVP_ENDPOINT);
-  url.searchParams.set("action", "comments");
-  url.searchParams.set("limit", "200");
-  url.searchParams.set("callback", cb);
-  url.searchParams.set("v", Date.now());
-
-  const script = document.createElement("script");
-  script.id = "_wishScript";
-  script.onerror = () => { el.textContent = "This wall is waiting for your words."; cleanup(); };
-  script.src = url.toString();
-  document.body.appendChild(script);
-}
-
-/* Load wishes on page load */
-loadGuestMessages();
 </script>
 </body>
 </html>
